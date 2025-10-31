@@ -1,0 +1,170 @@
+Frame number: 1
+Destination MAC: 00:02:16:09:FA:40
+Source MAC: 00:90:27:A1:36:D0
+Length/Type field: 2048
+Type: IPv4
+Source IP: 195.62.2.11
+Destination IP: 62.167.64.216
+Size: 153
+
+Frame number: 2
+Destination MAC: 00:90:27:A1:36:D0
+Source MAC: 00:02:16:09:FA:40
+Length/Type field: 2048
+Type: IPv4
+Source IP: 81.181.78.206
+Destination IP: 195.62.2.11
+Size: 66
+
+Frame number: 3
+Destination MAC: 00:90:27:A1:36:D0
+Source MAC: 00:02:16:09:FA:40
+Length/Type field: 2048
+Type: IPv4
+Source IP: 81.181.78.206
+Destination IP: 195.62.2.11
+Size: 86
+
+Frame number: 4
+Destination MAC: 00:02:16:09:FA:40
+Source MAC: 00:90:27:A1:36:D0
+Length/Type field: 2048
+Type: IPv4
+Source IP: 195.62.2.11
+Destination IP: 81.181.78.206
+Size: 66
+
+Frame number: 5
+Destination MAC: 00:02:16:09:FA:40
+Source MAC: 00:90:27:A1:36:D0
+Length/Type field: 2048
+Type: IPv4
+Source IP: 195.62.2.11
+Destination IP: 81.181.78.206
+Size: 810
+
+Frame number: 6
+Destination MAC: 00:08:02:8F:DA:6E
+Source MAC: 00:02:16:09:FA:40
+Length/Type field: 2048
+Type: IPv4
+Source IP: 205.188.9.82
+Destination IP: 195.62.2.42
+Size: 252
+
+Frame number: 7
+Destination MAC: 00:90:27:A1:36:D0
+Source MAC: 00:02:16:09:FA:40
+Length/Type field: 2048
+Type: IPv4
+Source IP: 81.181.78.206
+Destination IP: 195.62.2.11
+Size: 218
+
+Frame number: 8
+Destination MAC: 00:02:16:09:FA:40
+Source MAC: 00:90:27:A1:36:D0
+Length/Type field: 2048
+Type: IPv4
+Source IP: 195.62.2.11
+Destination IP: 81.181.78.206
+Size: 66
+
+Frame number: 9
+Destination MAC: FF:FF:FF:FF:FF:FF
+Source MAC: 00:08:02:8F:DA:6E
+Length/Type field: 2054
+Frame type: ARP
+
+Frame number: 10
+Destination MAC: 00:08:02:8F:DA:6E
+Source MAC: 00:02:16:09:FA:40
+Length/Type field: 2054
+Frame type: ARP
+
+Frame number: 11
+Destination MAC: 00:02:16:09:FA:40
+Source MAC: 00:08:02:8F:DA:6E
+Length/Type field: 2048
+Type: IPv4
+Source IP: 195.62.2.42
+Destination IP: 205.188.9.82
+Size: 54
+
+Frame number: 12
+Destination MAC: 00:90:27:A1:36:D0
+Source MAC: 00:02:16:09:FA:40
+Length/Type field: 2048
+Type: IPv4
+Source IP: 62.167.64.216
+Destination IP: 195.62.2.11
+Size: 54
+
+Frame number: 13
+Destination MAC: FF:FF:FF:FF:FF:FF
+Source MAC: 00:50:8B:95:40:A8
+Length/Type field: 2048
+Type: IPv4
+Source IP: 195.62.2.14
+Destination IP: 195.62.2.63
+Size: 92
+
+Frame number: 14
+Destination MAC: FF:FF:FF:FF:FF:FF
+Source MAC: 00:50:8B:95:40:A8
+Length/Type field: 2048
+Type: IPv4
+Source IP: 195.62.2.14
+Destination IP: 195.62.2.63
+Size: 92
+
+Frame number: 15
+Destination MAC: 00:90:27:A1:36:D0
+Source MAC: 00:02:16:09:FA:40
+Length/Type field: 2048
+Type: IPv4
+Source IP: 168.95.1.14
+Destination IP: 195.62.2.11
+Size: 216
+
+Frame number: 16
+Destination MAC: 00:02:16:09:FA:40
+Source MAC: 00:90:27:A1:36:D0
+Length/Type field: 2048
+Type: IPv4
+Source IP: 195.62.2.11
+Destination IP: 168.95.192.14
+Size: 102
+
+Frame number: 17
+Destination MAC: 01:80:C2:00:00:00
+Source MAC: 00:04:4D:8A:B0:D5
+Length/Type field: 38
+Frame 802.3/LLC (Frame 802.3/802.2 or Novell 802.2)
+
+Frame number: 18
+Destination MAC: 00:90:27:A1:36:D0
+Source MAC: 00:02:16:09:FA:40
+Length/Type field: 2048
+Type: IPv4
+Source IP: 81.181.78.206
+Destination IP: 195.62.2.11
+Size: 210
+
+Frame number: 19
+Destination MAC: 00:02:16:09:FA:40
+Source MAC: 00:90:27:A1:36:D0
+Length/Type field: 2048
+Type: IPv4
+Source IP: 195.62.2.11
+Destination IP: 217.71.128.77
+Size: 90
+
+
+Entire frame number: 19
+IPv4: 16
+ARP: 2
+DIX: 0
+RAW: 0
+SNAP: 0
+LLC: 1
