@@ -1,8 +1,11 @@
 ﻿#pragma comment (lib,"Ws2_32.lib")
 
 #include <stdio.h> 
+#include <fstream>
+#include <iostream>
 #include <WinSock.h> 
 #include <Windows.h>
+using namespace std;
 
 void PrintMAC(FILE *out, char *MAC){
    for(int i = 0; i < 5; i++)
@@ -16,7 +19,7 @@ void PrintIP(FILE *out, char *IP){
    fprintf_s(out, "%d", (unsigned char)IP[3]);
 }
 
-void main(){
+void prog(){
    char *buffer, fileName[256];
    int fileSize = 0, ARPcount = 0, IPv4count = 0, DIXcount = 0,
       SNAPcount = 0, RAWcount = 0, LLCcount = 0;
@@ -58,78 +61,27 @@ void main(){
          if(LT>=0x05DC){
             fprintf_s(out, "Type: Ethernet II (DIX)\n");
             switch(LT){
-               case 0x0800:
-                  fprintf_s(out, "Type: IPv4\n");
-                  break;
-case 0x0806:
-   fprintf_s(out, "Type: ARP\n");
-break;
-case 0x86DD:
-   fprintf_s(out, "Type: IPv6\n");
-break;
-               default:
+            case 0x0800:
+               fprintf_s(out, "Type: IPv4\n");
+               fprintf_s(out, "IP package:\n");
+               fprintf_s(out, "\tVersion: \n", LT);
+               fprintf_s(out, "\t \n", LT+1);
+               fprintf_s(out, "\t \n", LT+2);
+
+               break;
+            case 0x0806:
+               fprintf_s(out, "Type: ARP\n");
+               break;
+            case 0x86DD:
+               fprintf_s(out, "Type: IPv6\n");
+               break;
+            default:
                break;
             }
          } else{
             fprintf_s(out, "Type: IEEE\n");
-            switch(LT){
-               case 
-}
          }
-
-         switch(LT){
-         case 0x0800:
-            fprintf_s(out, "Type: IPv4\n");
-
-            fprintf_s(out, "Source IP: ");
-            PrintIP(out, curByte + 26); // 14 байт заголовка + смещение IP-адреса отправителя в IPv4-пакете(12 байт) = 26 байт
-            fprintf_s(out, "\n");
-
-            fprintf_s(out, "Destination IP: ");
-            PrintIP(out, curByte + 30); // IP-адрес назначения следует за адресом отправителя в IPv4-пакете (IP-адреса занимают 4 байта)
-            fprintf_s(out, "\n");
-
-            LT = ntohs(*(USHORT *)(curByte + 16)) + 14; // полный размер пакета указывается во 2 и 3-м байтах IPv4-пакета(в кадре 16 и 17-е байты),
-            // поэтому сначала считывается двухбайтовое число по адресу currbyte + 16, а затем прибавляется длина заголовка
-            fprintf_s(out, "Size: %d\n", LT);
-
-            curByte += LT;
-            IPv4count++;
-            break;
-
-         case 0x0806:
-            fprintf_s(out, "Frame type: ARP\n");
-
-            curByte += 28 + 14; // длина стандартного ARP-пакета 28 байт(является фиксированной) + 14 байт заголовка
-            ARPcount++;
-            break;
-
-         default:
-            if(LT > 0x05DC){
-               fprintf_s(out, "Frame Ethernet DIX (Ethernet II)\n");
-               DIXcount++;
-            } else{
-               USHORT frameType = ntohs(*(USHORT *)(curByte + 14));
-               switch(frameType){
-               case 0xFFFF:
-                  fprintf_s(out, "Frame Raw 802.3 (Novell 802.3)\n");
-                  RAWcount++;
-                  break;
-
-               case 0xAAAA:
-                  fprintf_s(out, "Frame Ethernet SNAP\n");
-                  SNAPcount++;
-                  break;
-
-               default:
-                  fprintf_s(out, "Frame 802.3/LLC (Frame 802.3/802.2 or Novell 802.2)\n");
-                  LLCcount++;
-                  break;
-               }
-            }
-            curByte += LT + 14; // длина данных + 14 байт заголовка
-            break;
-         }
+         curByte += LT + 14; // длина данных + 14 байт заголовка
          frame_number++;
          fprintf_s(out, "\n");
       }
@@ -142,5 +94,31 @@ break;
       fprintf_s(out, "SNAP: %d\n", SNAPcount);
       fprintf_s(out, "LLC: %d\n", LLCcount);
       fclose(out);
+   }
+}
+
+void main(){
+   string filePath= "ethers07.bin";
+   int fileSize = 0, ARPcount = 0, IPv4count = 0, DIXcount = 0,
+      SNAPcount = 0, RAWcount = 0, LLCcount = 0;
+   ifstream input;
+   ofstream output;
+   output.open("output.txt");
+   input.open(filePath);
+   if(input&&output){
+      input.seekg(0, ios::end);
+      streamsize fileSize = input.tellg();
+      input.seekg(0,ios::beg);
+      char* data = new char[fileSize];
+      input.read(data, fileSize);
+      input.close();
+      output.close();
+      for(int i = 0; i < fileSize; ++i){
+         printf("%02X ", static_cast<unsigned char>(data[i]));
+      }
+      cout << '\n';
+
+   } else{
+      cout<<"Can't open the file"<<endl;
    }
 }
